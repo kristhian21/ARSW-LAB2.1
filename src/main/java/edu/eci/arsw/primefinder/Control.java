@@ -15,7 +15,6 @@ public class Control extends Thread {
     private final static int NTHREADS = 3;
     private final static int MAXVALUE = 30000000;
     public final static int TMILISECONDS = 5000;
-
     private final int NDATA = MAXVALUE / NTHREADS;
     public static long tInicio = System.currentTimeMillis();
 
@@ -44,9 +43,9 @@ public class Control extends Thread {
         }
         while (true){
             Scanner input = new Scanner(System.in);
-            String validar = input.next();
+            String validar = input.nextLine();
             synchronized (pft){
-                if (validar.equals("x")){
+                if (validar.isEmpty()){
                     pft.notifyAll();
                 }
             }
