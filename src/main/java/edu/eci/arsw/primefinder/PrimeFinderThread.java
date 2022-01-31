@@ -22,15 +22,12 @@ public class PrimeFinderThread extends Thread{
         @Override
 	public void run(){
 	    synchronized (pft){
-	        int tiempobuscar= Control.TMILISECONDS;
-	        int add = Control.TMILISECONDS;
             for (int i= a;i < b;i++){
                 long tFinal = System.currentTimeMillis();
                 int tiempo = (int)(tFinal - Main.tInicio);
-                if (tiempo < tiempobuscar + 50 && tiempo > tiempobuscar - 50){
+                if (tiempo < Control.TMILISECONDS + 50 && tiempo > Control.TMILISECONDS - 50){
                     try {
                         pft.wait();
-                        tiempobuscar += add;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -43,6 +40,7 @@ public class PrimeFinderThread extends Thread{
                     }
                 }
             }
+
         }
 	}
 	

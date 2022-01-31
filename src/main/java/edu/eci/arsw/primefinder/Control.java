@@ -41,14 +41,15 @@ public class Control extends Thread {
         for(int i = 0;i < NTHREADS;i++ ) {
             pft[i].start();
         }
-        while (true){
-            Scanner input = new Scanner(System.in);
-            String validar = input.nextLine();
-            synchronized (pft){
-                if (validar.isEmpty()){
-                    pft.notifyAll();
-                }
-            }
+        while (true) {
+             Scanner input = new Scanner(System.in);
+             String validar = input.nextLine();
+             synchronized (pft){
+                 if (validar.isEmpty()) {
+                     pft.notifyAll();
+                     Main.tInicio = System.currentTimeMillis();
+                 }
+             }
         }
     }
 
